@@ -5,6 +5,7 @@ import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { MaterialSharedModule } from "../core";
 import { FilterStoreModule } from "../core/state/filter/filter-store.module";
+import { LoggingUserStoreModule } from "../core/state/logging-user/logging-user-store.module";
 import { RootStoreModule } from "../core/state/root-store.module";
 import { FilterComponent } from "../filter/filter.component";
 import { TableComponent } from "../table/table.component";
@@ -33,7 +34,8 @@ const API = [
     MaterialSharedModule,
     DashBoardRoutingModule,
     RootStoreModule,
-    FilterStoreModule
+    FilterStoreModule,
+    LoggingUserStoreModule
   ],
   providers: []
 })
