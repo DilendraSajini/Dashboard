@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 export interface Course {
+  userName: string;
   registerDate: Date;
   courseName: string;
   courseType: string;
@@ -9,22 +10,29 @@ export interface Course {
 }
 
 const ELEMENT_DATA: Course[] = [
-  { registerDate: new Date(), courseName: 'Hydrogen', courseType: 'Chemistry', courseStatus: 'H', courseCode: '001' },
+  { userName: 'UserName1', registerDate: new Date(), courseName: 'Course 01', courseType: 'Individual', courseStatus: 'Inprogress', courseCode: '001' },
 ];
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.css'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent implements OnInit {
-  dataSource = ELEMENT_DATA;
+
   displayedColumns: string[];
+  dataSource: Course[];
 
   constructor() { }
 
   ngOnInit(): void {
-    this.displayedColumns = ['registerDate', 'courseName', 'courseType', 'courseStatus'];
+    this.initializeDataSource();
+    this.displayedColumns = ['userName', 'registerDate', 'courseName', 'courseType', 'courseStatus'];
   }
 
+  private initializeDataSource() {
+    this.dataSource = ELEMENT_DATA;
+  }
 }

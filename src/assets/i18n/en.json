@@ -1,11 +1,19 @@
 {
-    "Sitetitle": "User Record Overview",
-    "Name": "Name",
-    "NameError": "I am sure you must have a name!",
-    "Email": "Email address",
-    "PhoneNo": "Phone No",
-    "Password": "Password",
-    "Bio": "Enter bio",
-    "TermsConditions": "I agree to terms and conditions.",
-    "Submit": "Submit"
+    "Sitetitle": "Users Registration Overview",
+    "FromDateFilter": "Choose From Date",
+    "ToDateFilter": "Choose To Date",
+    "TypeFilter": "Choose Type",
+    "StatusFilter": "Choose Status",
+    "Search": "Search",
+    "UserName": "User Name",
+    "RegistrationDate": "Registration Date",
+    "CourseName": "Course Name",
+    "CourseType": "Course Type",
+    "Status": "Status",
+    "Individual": "Individual",
+    "Group": "Group",
+    "New": "New",
+    "Inprogress": "Inprogress",
+    "Completed": "Completed",
+    "Course 01": "Course 01"
 }

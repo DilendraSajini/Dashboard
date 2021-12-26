@@ -1,24 +1,30 @@
 <div class="table-container mat-elevation-z8">
   <ng-container>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+
+      <ng-container matColumnDef="userName">
+        <th mat-header-cell *matHeaderCellDef [innerHTML]="'UserName' | translate"></th>
+        <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+      </ng-container>
+
       <ng-container matColumnDef="registerDate">
-        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <th mat-header-cell *matHeaderCellDef [innerHTML]="'RegistrationDate' | translate"></th>
         <td mat-cell *matCellDef="let element"> {{element.registerDate}} </td>
       </ng-container>
 
       <ng-container matColumnDef="courseName">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.courseName}} </td>
+        <th mat-header-cell *matHeaderCellDef [innerHTML]="'CourseName' | translate"></th>
+        <td mat-cell *matCellDef="let element"> {{element.courseName | translate}} </td>
       </ng-container>
 
       <ng-container matColumnDef="courseType">
-        <th mat-header-cell *matHeaderCellDef> Type </th>
-        <td mat-cell *matCellDef="let element"> {{element.courseType}} </td>
+        <th mat-header-cell *matHeaderCellDef [innerHTML]="'CourseType' | translate"></th>
+        <td mat-cell *matCellDef="let element"> {{element.courseType | translate}} </td>
       </ng-container>
 
       <ng-container matColumnDef="courseStatus">
-        <th mat-header-cell *matHeaderCellDef> Status </th>
-        <td mat-cell *matCellDef="let element"> {{element.courseStatus}} </td>
+        <th mat-header-cell *matHeaderCellDef [innerHTML]="'Status' | translate"></th>
+        <td mat-cell *matCellDef="let element"> {{element.courseStatus | translate}} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

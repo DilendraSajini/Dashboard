@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from '@angular/router';
-import { RouteConstants } from 'src/core';
+import { RouteConstants } from "../core";
 import { DashboardComponent } from "./dashboard.component";
 
 export const routes: Routes = [

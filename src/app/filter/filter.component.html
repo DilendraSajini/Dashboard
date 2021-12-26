@@ -1,28 +1,26 @@
 <div class="wrapper">
-  <br>
-  <br>
   <form>
     <mat-form-field>
       <span matPrefix> </span>
-      <input type="text" matInput placeholder="Search" name="search">
-      <button matSuffix mat-button>
+      <input type="text" matInput #searchValue placeholder="{{'Search' | translate }}" name="search">
+      <button matSuffix mat-button (click)="onValueChange(searchValue, $event)">
         <mat-icon>search</mat-icon>
       </button>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Choose from date</mat-label>
+      <mat-label [innerHTML]="'FromDateFilter' | translate"></mat-label>
       <input matInput [matDatepicker]="picker">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Choose to date</mat-label>
+      <mat-label [innerHTML]="'ToDateFilter' | translate"></mat-label>
       <input matInput [matDatepicker]="picker">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Choose Type</mat-label>
+      <mat-label [innerHTML]="'TypeFilter' | translate"></mat-label>
       <mat-select>
         <mat-option *ngFor="let types of coursesTypes" [value]="types.value">
           {{types.viewValue}}
@@ -30,7 +28,7 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Choose Status</mat-label>
+      <mat-label [innerHTML]="'StatusFilter' | translate"></mat-label>
       <mat-select>
         <mat-option *ngFor="let status of coursesStatus" [value]="status.value">
           {{status.viewValue}}
