@@ -1,0 +1,11 @@
+.wrapper {
+  background-color: gray;
+}
+.mat-form-field{
+  padding-left: 20px;
+}
+.toggle{
+  position: absolute ;
+  padding-left: 20px;
+  right: 10px ;
+}

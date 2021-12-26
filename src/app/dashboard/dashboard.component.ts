@@ -7,10 +7,11 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor( public translate: TranslateService) {
-    translate.addLangs(['en', 'nl']);
-    translate.setDefaultLang('en');
-   }
+  constructor(public translate: TranslateService) {
+    translate.addLangs(['en', 'sv']);
+    this.translate.use(this.translate.getBrowserLang());
+    translate.setDefaultLang('sv');
+  }
 
   ngOnInit(): void {
 
