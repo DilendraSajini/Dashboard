@@ -1,4 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { selectTableData } from '../core/state/table';
 
 export interface Course {
   userName: string;
@@ -8,10 +12,6 @@ export interface Course {
   courseStatus: string;
   courseCode: string;
 }
-
-const ELEMENT_DATA: Course[] = [
-  { userName: 'UserName1', registerDate: new Date(), courseName: 'Course 01', courseType: 'Individual', courseStatus: 'Inprogress', courseCode: '001' },
-];
 
 const DISPLAYED_COLUMNS: string[] = ['userName', 'registerDate', 'courseName', 'courseType', 'courseStatus'];
 
@@ -26,8 +26,8 @@ export class TableComponent implements OnInit {
 
   displayedColumns: string[];
   dataSource: Course[];
-
-  constructor() { }
+  private readonly destroySub: Subject<void> = new Subject<void>();
+  constructor(private readonly store: Store) { }
 
   ngOnInit(): void {
     this.initializeDataSource();
@@ -35,6 +35,16 @@ export class TableComponent implements OnInit {
   }
 
   private initializeDataSource() {
-    this.dataSource = ELEMENT_DATA;
+    this.store
+      .select(selectTableData)
+      .pipe(takeUntil(this.destroySub))
+      .subscribe(tableData => {
+        this.dataSource = tableData;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroySub.next();
+    this.destroySub.complete();
   }
 }

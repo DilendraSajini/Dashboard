@@ -7,6 +7,7 @@ import { MaterialSharedModule } from "../core";
 import { FilterStoreModule } from "../core/state/filter/filter-store.module";
 import { LoggingUserStoreModule } from "../core/state/logging-user/logging-user-store.module";
 import { RootStoreModule } from "../core/state/root-store.module";
+import { TableDataStoreModule } from "../core/state/table/table-store.module";
 import { FilterComponent } from "../filter/filter.component";
 import { TableComponent } from "../table/table.component";
 import { DashBoardRoutingModule } from "./dashboard-routing.module";
@@ -35,6 +36,7 @@ const API = [
     DashBoardRoutingModule,
     RootStoreModule,
     FilterStoreModule,
+    TableDataStoreModule,
     LoggingUserStoreModule
   ],
   providers: []

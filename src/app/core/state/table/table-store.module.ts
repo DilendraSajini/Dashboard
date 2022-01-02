@@ -10,4 +10,4 @@ import { featureKey, reducer } from './table.reducer';
   ],
   providers: [provideBootstrapEffects([TableEffects])],
 })
-export class FilterStoreModule {}
+export class TableDataStoreModule {}
