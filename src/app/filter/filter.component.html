@@ -1,27 +1,27 @@
 <div class="wrapper">
-  <form>
+  <form [formGroup]="filters">
     <mat-form-field>
       <span matPrefix> </span>
-      <input type="text" matInput #searchValue placeholder="{{'Search' | translate }}" name="search">
+      <input type="text" matInput #searchValue placeholder="{{'Search' | translate }}" name="search" [value]="searchFieldValue">
       <button matSuffix mat-button (click)="onValueChange(searchValue, $event)">
         <mat-icon>search</mat-icon>
       </button>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label [innerHTML]="'FromDateFilter' | translate"></mat-label>
-      <input matInput [matDatepicker]="picker">
+      <input matInput [matDatepicker]="picker" [formControl]="fromDate">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label [innerHTML]="'ToDateFilter' | translate"></mat-label>
-      <input matInput [matDatepicker]="picker">
+      <input matInput [matDatepicker]="picker" [formControl]="toDate">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label [innerHTML]="'TypeFilter' | translate"></mat-label>
-      <mat-select>
+      <mat-select [formControl]="courseType">
         <mat-option *ngFor="let types of coursesTypes" [value]="types.value">
           {{types.viewValue}}
         </mat-option>
@@ -29,14 +29,14 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label [innerHTML]="'StatusFilter' | translate"></mat-label>
-      <mat-select>
+      <mat-select [formControl]="courseStatus">
         <mat-option *ngFor="let status of coursesStatus" [value]="status.value">
           {{status.viewValue}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <span class="toggle">
-      <mat-button-toggle value="bold">Show code</mat-button-toggle>
+      <mat-button-toggle value="bold" [checked]="showCode">Show code</mat-button-toggle>
     </span>
   </form>
 </div>

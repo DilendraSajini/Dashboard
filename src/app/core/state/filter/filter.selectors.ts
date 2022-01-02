@@ -10,10 +10,10 @@ export const selectToggle = createSelector(getFilterState, state => state.showCo
 export const selectClientSide = createSelector(
   selectSearch,
   selectToggle,
-  (searchValue, code) => {
+  (searchValue, showCode) => {
     return {
       searchValue: searchValue,
-      showAntibioticCode: code,
+      showCode: showCode,
     };
   }
 );
@@ -34,8 +34,8 @@ export const selectServerSide = createSelector(
     return {
       fromDate: fromDate,
       toDate: toDate,
-      receiver: type,
-      receivingUnits: status,
+      courseType: type,
+      courseStatus: status,
     };
   }
 );

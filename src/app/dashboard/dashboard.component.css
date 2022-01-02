@@ -3,3 +3,10 @@
   right: 10px ;
   top:10px;
 }
+
+#userName{
+  position: absolute ;
+  right: 100px ;
+  top:15px;
+  font-size: 15px;
+}

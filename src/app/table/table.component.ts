@@ -13,6 +13,8 @@ const ELEMENT_DATA: Course[] = [
   { userName: 'UserName1', registerDate: new Date(), courseName: 'Course 01', courseType: 'Individual', courseStatus: 'Inprogress', courseCode: '001' },
 ];
 
+const DISPLAYED_COLUMNS: string[] = ['userName', 'registerDate', 'courseName', 'courseType', 'courseStatus'];
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -29,7 +31,7 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeDataSource();
-    this.displayedColumns = ['userName', 'registerDate', 'courseName', 'courseType', 'courseStatus'];
+    this.displayedColumns = DISPLAYED_COLUMNS;
   }
 
   private initializeDataSource() {

@@ -1,4 +1,6 @@
 import { createAction, props } from '@ngrx/store';
+import { COURSE_STATUS } from '../../model/course-status';
+import { COURSE_TYPE } from '../../model/course-type';
 
 export const updateSearch = createAction(
   '[Search] Change Search ',
@@ -12,7 +14,10 @@ export const updateCode = createAction(
 
 export const updateFilterCriteria = createAction(
   '[Filter] Change Filter Criteria',
-  props<{ fromDate: Date; toDate: Date;}>()
+  props<{
+    fromDate: Date; toDate: Date; courseType: COURSE_TYPE;
+    courseStatus: COURSE_STATUS
+  }>()
 );
 
 export const setInitialFromDate = createAction(

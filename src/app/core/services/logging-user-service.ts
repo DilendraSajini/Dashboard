@@ -10,8 +10,8 @@ export class SearchCriteria {
 export function findLoggingUser(
 ): Observable<LoggingUser> {
   return of({
-    id: '02',
-    name: 'User 02',
-    type: 'Acedemic'
+    userId: '02',
+    userName: 'User 02',
+    userType: 'Acedemic'
   });
 }

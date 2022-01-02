@@ -12,14 +12,14 @@ export class LoggingUserEffects {
   constructor(private readonly actions$: Actions) { }
   getLoggingUser$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(LoggingUserActions.getLoggingUser),
+      ofType(LoggingUserActions.setLoggingUser),
       switchMap(() => findLoggingUser()),
       catchError(error => {
-        logError(this, error, 'setDefaultFromDate');
+        logError(this, error, 'setDefaultLoggingUser');
         return of([]);
       }),
       map((user: LoggingUser) => {
-        if (user.id) {
+        if (user.userId) {
           return this.updateLoggingUser(user);
         } else {
           return this.updateLoggingUser(user);
@@ -31,7 +31,9 @@ export class LoggingUserEffects {
 
   private updateLoggingUser(user: LoggingUser) {
     return LoggingUserActions.changeLoggingUser({
-      userId: user.id,
+      userId: user.userId,
+      userName: user.userName,
+      userType: user.userType,
     });
   }
 }
