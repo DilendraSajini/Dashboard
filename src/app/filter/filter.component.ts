@@ -97,7 +97,7 @@ export class FilterComponent implements OnInit {
       });
   }
 
-  private handleFilterChange(value) {
+  private handleFilterChange(value): void {
     this.store.dispatch(
       FilterActions.updateFilterCriteria({
         fromDate: value.fromDate,
