@@ -1,7 +1,7 @@
-import { COURSE_TYPE } from "./course-type";
+import { COURSE_TYPE } from './course-type';
 
 export class Course {
   id: string;
-  name:string;
+  name: string;
   type: COURSE_TYPE;
 }

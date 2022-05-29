@@ -13,7 +13,7 @@ export const selectClientSide = createSelector(
   (searchValue, showCode) => {
     return {
       searchValue: searchValue,
-      showCode: showCode,
+      showCode: showCode
     };
   }
 );

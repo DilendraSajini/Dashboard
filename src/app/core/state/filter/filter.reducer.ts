@@ -22,20 +22,20 @@ const initialFilterState: Filter = {
   courseType: COURSE_TYPE.Individual,
   courseStatus: COURSE_STATUS.New,
   showCode: true
-}
+};
 
 export const reducer = createReducer(
   initialFilterState,
   on(updateSearch, (state, action) => {
     return {
       ...state,
-      searchValue: action.searchValue,
+      searchValue: action.searchValue
     };
   }),
   on(updateCode, (state, action) => {
     return {
       ...state,
-      showAntibioticCode: action.showAntibioticCode,
+      showAntibioticCode: action.showAntibioticCode
     };
   }),
   on(updateFilterCriteria, (state, action) => {

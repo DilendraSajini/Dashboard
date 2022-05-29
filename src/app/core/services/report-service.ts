@@ -19,7 +19,8 @@ export class SearchCriteria {
 }
 
 export function findRecordsByUser(
-  searchCriteria: any,
+  searchCriteria: any
 ): Observable<Array<UserRecord>> {
-  return of([{ userName: 'UserName1', registerDate: new Date(), courseName: 'Course 01', courseType: 'Individual', courseStatus: 'Inprogress', courseCode: '001' }]);
+  return of([{ userName: 'UserName1', registerDate: new Date(), courseName: 'Course 01', courseType: 'Individual',
+   courseStatus: 'Inprogress', courseCode: '001' }]);
 }

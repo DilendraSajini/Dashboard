@@ -8,7 +8,7 @@ import { selectServerSide } from './filter.selectors';
 export class FilterEffects {
   constructor(
     private readonly actions$: Actions,
-    private readonly store: Store,
+    private readonly store: Store
   ) {}
 
   // changeServerFilterSelection$ = createEffect(

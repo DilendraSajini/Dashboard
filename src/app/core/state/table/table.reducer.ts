@@ -10,12 +10,13 @@ export interface Table {
 }
 
 const ELEMENT_DATA: Course[] = [
-  { userName: 'UserName1', registerDate: new Date(), courseName: 'Course 01', courseType: 'Individual', courseStatus: 'Inprogress', courseCode: '001' },
+  { userName: 'UserName1', registerDate: new Date(), courseName: 'Course 01', courseType: 'Individual',
+   courseStatus: 'Inprogress', courseCode: '001' }
 ];
 
 const initialTableDataStateState: Table = {
   tableIsLoading: true,
-  tableData: ELEMENT_DATA,
+  tableData: ELEMENT_DATA
 };
 
 export const reducer = createReducer(

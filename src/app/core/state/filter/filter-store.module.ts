@@ -8,6 +8,6 @@ import { featureKey, reducer } from './filter.reducer';
   imports: [
     StoreModule.forFeature(featureKey, reducer)
   ],
-  providers: [provideBootstrapEffects([FilterEffects])],
+  providers: [provideBootstrapEffects([FilterEffects])]
 })
 export class FilterStoreModule {}

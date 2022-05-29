@@ -1,9 +1,9 @@
-import { Observable, of } from "rxjs";
-import { LoggingUser } from "../state/logging-user/logging-user.reducer";
+import { Observable, of } from 'rxjs';
+import { LoggingUser } from '../state/logging-user/logging-user.reducer';
 
 export class SearchCriteria {
   constructor(
-    private readonly loggingUserId: string,
+    private readonly loggingUserId: string
   ) { }
 }
 

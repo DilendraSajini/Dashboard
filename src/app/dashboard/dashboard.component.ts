@@ -15,7 +15,7 @@ import { selectUserName } from '../core/state/logging-user';
 export class DashboardComponent implements OnInit {
 
   private readonly destroySub = new Subject<void>();
-  loggingUser = "";
+  loggingUser = '';
 
   constructor(private readonly store: Store, public translate: TranslateService) {
     translate.addLangs(['en', 'sv']);
@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(LoggingUserActions.setLoggingUser())
+    this.store.dispatch(LoggingUserActions.setLoggingUser());
     this.store
     .select(selectUserName)
     .pipe(

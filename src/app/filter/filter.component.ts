@@ -29,7 +29,7 @@ const COURSES_STATUS: selection[] = [
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.css'],
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FilterComponent implements OnInit {
   filters: FormGroup;
@@ -50,7 +50,7 @@ export class FilterComponent implements OnInit {
       fromDate: this.fromDate,
       toDate: this.toDate,
       courseType: this.courseType,
-      courseStatus: this.courseStatus,
+      courseStatus: this.courseStatus
     });
    }
 
@@ -64,13 +64,13 @@ export class FilterComponent implements OnInit {
     if (searchValue.value.length > 1) {
       this.store.dispatch(
         FilterActions.updateSearch({
-          searchValue: searchValue.value,
+          searchValue: searchValue.value
         })
       );
     } else {
       this.store.dispatch(
         FilterActions.updateSearch({
-          searchValue: '',
+          searchValue: ''
         })
       );
     }
