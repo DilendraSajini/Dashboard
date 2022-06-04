@@ -3,15 +3,19 @@ table {
 }
 
 .mat-header-cell {
+  background-color: #646566;
   padding-left: 16px;
   font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
   text-align: center;
 }
 
 .mat-cell {
-  background-color: gray;
+  background-color: #a6acaf;
   font-size: 12px;
+  color: black;
 }
+
 table {
-  border-color: white !important;
+  border-color: rgb(14, 13, 13) !important;
 }
