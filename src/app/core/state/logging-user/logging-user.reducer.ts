@@ -21,7 +21,7 @@ export const reducer = createReducer(
       ...state,
       userId: action.userId,
       userName: action.userName,
-      userType: action.userType,
+      userType: action.userType
     };
   })
 );

@@ -4,24 +4,26 @@ import { Store } from '@ngrx/store';
 import { startOfToday } from 'date-fns';
 import { combineLatest, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, takeUntil } from 'rxjs/operators';
-import { COURSE_STATUS } from '../core/model/course-status';
-import { COURSE_TYPE } from '../core/model/course-type';
+import { COURSE_STATUS } from '../core/model/course';
+import { COURSE_TYPE } from '../core/model/course';
 import { FilterActions, selectClientSide, selectServerSide } from '../core/state/filter';
 import { comparator } from '../core/utils/comparator-util';
 
-interface selection {
+interface Selection {
   value: string;
   viewValue: string;
 }
-const COURSES_TYPES: selection[] = [
+const COURSES_TYPES: Selection[] = [
+  { value: COURSE_TYPE.All, viewValue: COURSE_TYPE['All'] },
   { value: COURSE_TYPE.Individual, viewValue: COURSE_TYPE['Individual'] },
-  { value: COURSE_TYPE.Group, viewValue: COURSE_TYPE['Group'] },
+  { value: COURSE_TYPE.Group, viewValue: COURSE_TYPE['Group'] }
 ];
 
-const COURSES_STATUS: selection[] = [
+const COURSES_STATUS: Selection[] = [
+  { value: COURSE_STATUS.All, viewValue: COURSE_STATUS['All'] },
   { value: COURSE_STATUS.New, viewValue: COURSE_STATUS['New'] },
   { value: COURSE_STATUS.Inprogress, viewValue: COURSE_STATUS['Inprogress'] },
-  { value: COURSE_STATUS.Completed, viewValue: COURSE_STATUS['Completed'] },
+  { value: COURSE_STATUS.Completed, viewValue: COURSE_STATUS['Completed'] }
 ];
 
 @Component({
@@ -36,12 +38,12 @@ export class FilterComponent implements OnInit {
   searchFieldValue = '';
   fromDate = new FormControl(startOfToday());
   toDate = new FormControl(startOfToday());
-  courseType = new FormControl('group');
-  courseStatus = new FormControl('completed');
+  courseType = new FormControl('All');
+  courseStatus = new FormControl('All');
   showCode = true;
 
-  coursesTypes: selection[] = COURSES_TYPES;
-  coursesStatus: selection[] = COURSES_STATUS;
+  coursesTypes: Selection[] = COURSES_TYPES;
+  coursesStatus: Selection[] = COURSES_STATUS;
   private readonly debounceTime = 400;
   private readonly destroySub = new Subject<void>();
 
@@ -97,7 +99,7 @@ export class FilterComponent implements OnInit {
       });
   }
 
-  private handleFilterChange(value): void {
+  private handleFilterChange(value: any): void {
     this.store.dispatch(
       FilterActions.updateFilterCriteria({
         fromDate: value.fromDate,

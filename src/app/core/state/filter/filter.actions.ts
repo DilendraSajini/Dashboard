@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
-import { COURSE_STATUS } from '../../model/course-status';
-import { COURSE_TYPE } from '../../model/course-type';
+import { COURSE_STATUS } from '../../model/course';
+import { COURSE_TYPE } from '../../model/course';
 
 export const updateSearch = createAction(
   '[Search] Change Search ',

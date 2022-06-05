@@ -3,17 +3,17 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { LoggingUserActions } from '.';
-import { findLoggingUser } from '../../services/logging-user-service';
+import { LoggingUserService } from '../../services/logging-user-service';
 import { logError } from '../../utils/log-util';
 import { LoggingUser } from './logging-user.reducer';
 
 @Injectable()
 export class LoggingUserEffects {
-  constructor(private readonly actions$: Actions) { }
+  constructor(private readonly actions$: Actions, private readonly loggingUserService: LoggingUserService) { }
   getLoggingUser$ = createEffect(() =>
     this.actions$.pipe(
       ofType(LoggingUserActions.setLoggingUser),
-      switchMap(() => findLoggingUser()),
+      switchMap(() => this.loggingUserService.findLoggingUser()),
       catchError(error => {
         logError(this, error, 'setDefaultLoggingUser');
         return of([]);

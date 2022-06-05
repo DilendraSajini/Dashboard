@@ -9,10 +9,7 @@ export interface Table {
   tableData: Course[];
 }
 
-const ELEMENT_DATA: Course[] = [
-  { userName: 'UserName1', registerDate: new Date(), courseName: 'Course 01', courseType: 'Individual',
-   courseStatus: 'Inprogress', courseCode: '001' }
-];
+const ELEMENT_DATA: Course[] = [];
 
 const initialTableDataStateState: Table = {
   tableIsLoading: true,
@@ -25,13 +22,13 @@ export const reducer = createReducer(
     return {
       ...state,
       tableData: action.tableData,
-      tableIsLoading: action.tableIsLoading,
+      tableIsLoading: action.tableIsLoading
     };
   }),
   on(updateTableIsLoading, (state, action) => {
     return {
       ...state,
-      tableIsLoading: action.tableIsLoading,
+      tableIsLoading: action.tableIsLoading
     };
   })
 );

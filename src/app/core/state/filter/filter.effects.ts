@@ -3,66 +3,64 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { FilterActions } from '.';
 import { selectServerSide } from './filter.selectors';
-
+import { LoggingUserActions, selectLoggingUser } from '../logging-user';
+import { TableActions } from '../table';
+import { catchError, map, switchMap, withLatestFrom } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { logError } from '../../utils/log-util';
+import { ReportsService, SearchCriteria } from '../../services/report-service';
 @Injectable()
 export class FilterEffects {
   constructor(
     private readonly actions$: Actions,
-    private readonly store: Store
-  ) {}
+    private readonly store: Store,
+    private readonly reportsService: ReportsService
+  ) { }
 
-  // changeServerFilterSelection$ = createEffect(
-  //   () =>
-  //     this.actions$.pipe(
-  //       ofType(FilterActions.updateFilterCriteria),
-  //       withLatestFrom(this.store.select(selectServerSide), this.store.select(selectSoc)),
-  //       map(([action, { fromDate, toDate, receivingUnits, receiver }, soc]) => {
-  //         return {
-  //           soc: getSOCId(soc),
-  //           fromDate: fromDate,
-  //           toDate: toDate,
-  //           receivingUnits: receivingUnits,
-  //           receiver: receiver,
-  //           actionDiscriminator: action.type === TableDataActions.refreshTableData.type ? Math.random() : 1,
-  //         };
-  //       }),
-  //       distinctUntilChanged(comparator),
-  //       switchMap(searchCriteria => {
-  //         if (searchCriteria.soc) {
-  //           this.store.dispatch(
-  //             TableDataActions.updateTableIsLoading({
-  //               tableIsLoading: true,
-  //             })
-  //           );
-  //           return findMicrobiologyReportsByPatient(
-  //             new SearchCriteria(
-  //               searchCriteria.soc,
-  //               searchCriteria.fromDate,
-  //               searchCriteria.toDate,
-  //               searchCriteria.receivingUnits,
-  //               searchCriteria.receiver
-  //             ),
-  //             this.reportsService
-  //           ).pipe(
-  //             catchError(error => {
-  //               logError(this, error, 'changeServerFilterSelection');
-  //               this.store.dispatch(TableDataActions.getTableDataFailureAction());
-  //               return of([]);
-  //             })
-  //           );
-  //         } else {
-  //           return of([]);
-  //         }
-  //       }),
-  //       map(reports => processReportData(reports, this.datePipe)),
-  //       map(tableData => {
-  //         return TableDataActions.updateTableData({
-  //           tableData: tableData,
-  //           tableIsLoading: false,
-  //         });
-  //       })
-  //     ),
-  //   { dispatch: true }
-  // );
-
+  changeServerFilterSelection$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(FilterActions.updateFilterCriteria, LoggingUserActions.changeLoggingUser),
+        withLatestFrom(this.store.select(selectServerSide), this.store.select(selectLoggingUser)),
+        map(([action, { fromDate, toDate, courseType, courseStatus }, loggingUser]) => {
+          return {
+            loggingUserId: loggingUser.userId,
+            fromDate: fromDate,
+            toDate: toDate,
+            courseType: courseType,
+            courseStatus: courseStatus
+            //actionDiscriminator: action.type === TableActions.refreshTableData.type ? Math.random() : 1,
+          };
+        }),
+        switchMap(searchCriteria => {
+          this.store.dispatch(
+            TableActions.updateTableIsLoading({
+              tableIsLoading: true
+            })
+          );
+          return this.reportsService.findRecordsByUser(
+            new SearchCriteria(
+              searchCriteria.loggingUserId,
+              searchCriteria.fromDate,
+              searchCriteria.toDate,
+              searchCriteria.courseType,
+              searchCriteria.courseStatus
+            )
+          ).pipe(
+            catchError(error => {
+              logError(this, error, 'changeServerFilterSelection');
+              this.store.dispatch(TableActions.getTableDataFailureAction());
+              return of([]);
+            })
+          );
+        }),
+        map(tableData => {
+          return TableActions.updateTableData({
+            tableData: tableData,
+            tableIsLoading: false
+          });
+        })
+      ),
+    { dispatch: true }
+  );
 }

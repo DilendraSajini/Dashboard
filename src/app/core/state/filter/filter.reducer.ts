@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
-import { startOfToday } from 'date-fns';
-import { COURSE_STATUS } from '../../model/course-status';
-import { COURSE_TYPE } from '../../model/course-type';
+import { startOfToday, startOfTomorrow, startOfYesterday } from 'date-fns';
+import { COURSE_STATUS } from '../../model/course';
+import { COURSE_TYPE } from '../../model/course';
 import { updateCode, updateFilterCriteria, updateFromDate, updateSearch } from './filter.actions';
 
 export const featureKey = 'filter';
@@ -17,11 +17,11 @@ export interface Filter {
 
 const initialFilterState: Filter = {
   searchValue: '',
-  fromDate: startOfToday(),
-  toDate: startOfToday(),
-  courseType: COURSE_TYPE.Individual,
-  courseStatus: COURSE_STATUS.New,
-  showCode: true
+  fromDate: startOfYesterday(),
+  toDate: startOfTomorrow(),
+  courseType: COURSE_TYPE.All,
+  courseStatus: COURSE_STATUS.All,
+  showCode: false
 };
 
 export const reducer = createReducer(

@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { Subject } from 'rxjs';
-import { map, take, takeUntil } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+//import { map, take, takeUntil } from 'rxjs/operators';
 import { LoggingUserActions } from '../core/state/logging-user';
 import { selectUserName } from '../core/state/logging-user';
 
@@ -15,22 +15,19 @@ import { selectUserName } from '../core/state/logging-user';
 export class DashboardComponent implements OnInit {
 
   private readonly destroySub = new Subject<void>();
-  loggingUser = '';
+  loggingUser$: Observable<string>;
 
   constructor(private readonly store: Store, public translate: TranslateService) {
     translate.addLangs(['en', 'sv']);
     this.translate.use(this.translate.getBrowserLang());
-    translate.setDefaultLang('sv');
+    //translate.setDefaultLang('sv');
   }
 
   ngOnInit(): void {
     this.store.dispatch(LoggingUserActions.setLoggingUser());
-    this.store
-    .select(selectUserName)
-    .pipe(
-      takeUntil(this.destroySub)
-    )
-    .subscribe(value => this.loggingUser = value);
+    this.loggingUser$ = this.store
+    .select(selectUserName);
+
   }
   switchLang(lang: string) {
     this.translate.use(lang);
@@ -39,6 +36,4 @@ export class DashboardComponent implements OnInit {
     this.destroySub.next();
     this.destroySub.complete();
   }
-
-
 }

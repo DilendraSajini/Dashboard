@@ -13,4 +13,5 @@ export const updateTableIsLoading = createAction(
   props<{ tableIsLoading: boolean }>()
 );
 
+export const getTableDataFailureAction = createAction('[LoadTableData] Get Table Data Failure Action');
 

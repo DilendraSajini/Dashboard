@@ -9,15 +9,15 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label [innerHTML]="'FromDateFilter' | translate"></mat-label>
-      <input matInput [matDatepicker]="picker" [formControl]="fromDate">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+      <input matInput [matDatepicker]="frompicker" [formControl]="fromDate">
+      <mat-datepicker-toggle matSuffix [for]="frompicker"></mat-datepicker-toggle>
+      <mat-datepicker #frompicker></mat-datepicker>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label [innerHTML]="'ToDateFilter' | translate"></mat-label>
-      <input matInput [matDatepicker]="picker" [formControl]="toDate">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+      <input matInput [matDatepicker]="topicker" [formControl]="toDate">
+      <mat-datepicker-toggle matSuffix [for]="topicker"></mat-datepicker-toggle>
+      <mat-datepicker #topicker></mat-datepicker>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label [innerHTML]="'TypeFilter' | translate"></mat-label>
@@ -36,7 +36,7 @@
       </mat-select>
     </mat-form-field>
     <span class="toggle">
-      <mat-button-toggle value="bold" >Show code</mat-button-toggle>
+      <mat-button-toggle value="bold" [checked]="showCode">Show code</mat-button-toggle>
     </span>
   </form>
 </div>

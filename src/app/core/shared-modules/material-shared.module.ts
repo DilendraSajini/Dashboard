@@ -10,6 +10,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatSortModule } from '@angular/material/sort';
 
 const MATERIAL_MODULES = [
   MatTableModule,
@@ -22,7 +23,8 @@ const MATERIAL_MODULES = [
   MatNativeDateModule,
   MatSelectModule,
   MatToolbarModule,
-  MatButtonToggleModule
+  MatButtonToggleModule,
+  MatSortModule
 ];
 
 @NgModule({
