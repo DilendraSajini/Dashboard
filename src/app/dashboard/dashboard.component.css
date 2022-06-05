@@ -3,10 +3,16 @@
   right: 10px;
   top: 10px;
 }
-
 #userName {
   position: absolute;
   right: 100px;
   top: 15px;
   font-size: 15px;
+  padding-right: 20px !important;
+}
+.form-inline {
+  padding-right: 20px !important;
+}
+.form-control {
+  padding: 5px !important;
 }

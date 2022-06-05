@@ -1,24 +1,25 @@
 .wrapper {
   background-color: #646566;
-  margin-bottom: .5px;
+  margin-bottom: 1px;
 }
 .mat-form-field {
-  margin: 10px;
-
-  font-size: 15px;
+  margin-top: 15px;
+  margin-left: 25px;
+  margin-right: 60px;
+  font-size: 18px;
 }
 .mat-button-toggle {
   font-size: 15px;
+  margin-right: 20px;
 }
 .toggle {
   position: absolute;
-  padding: 20px;
-  right: 10px;
+  padding-top: 20px;
+  padding-left: 30px;
 }
 
-.mat-select-value {
-  color: black;
+.mat-input-element
+{
+  color: rgb(243, 243, 243) !important;
 }
-.mat-form-field-appearance-legacy .mat-form-field-label {
-  color: black;
-}
+
