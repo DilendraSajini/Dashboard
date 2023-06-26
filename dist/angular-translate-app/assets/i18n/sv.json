@@ -1,0 +1,20 @@
+{
+  "Sitetitle": "Översikt över användarregistrering",
+  "FromDateFilter": "Välj från datum",
+  "ToDateFilter": "Välj Till Date",
+  "TypeFilter": "Välj Typ",
+  "StatusFilter": "Välj Status",
+  "Search": "Sök",
+  "UserName": "Användarnamn",
+  "RegistrationDate": "Registrerings datum",
+  "CourseName": "Kursnamn",
+  "CourseType": "Kurstyp",
+  "Status": "Status",
+  "Individual": "Enskild",
+  "Group": "Grupp",
+  "All": "Allt",
+  "New": "Ny",
+  "Inprogress": "Pågående",
+  "Completed": "Avslutad",
+  "Course 01": "Kurs 01"
+}

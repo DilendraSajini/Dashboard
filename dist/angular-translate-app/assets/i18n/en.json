@@ -1,0 +1,20 @@
+{
+    "Sitetitle": "User Registration Overview",
+    "FromDateFilter": "Choose From Date",
+    "ToDateFilter": "Choose To Date",
+    "TypeFilter": "Choose Type",
+    "StatusFilter": "Choose Status",
+    "Search": "Search",
+    "UserName": "User Name",
+    "RegistrationDate": "Registration Date",
+    "CourseName": "Course Name",
+    "CourseType": "Course Type",
+    "Status": "Status",
+    "Individual": "Individual",
+    "Group": "Group",
+    "All": "All",
+    "New": "New",
+    "Inprogress": "Inprogress",
+    "Completed": "Completed",
+    "Course 01": "Course 01"
+}
